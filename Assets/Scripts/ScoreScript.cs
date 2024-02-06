@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class ScoreScript : MonoBehaviour
@@ -24,13 +25,18 @@ public class ScoreScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-    if (collision.gameObject.tag=="obstacle")
-    {
-        score++;
-        ScoreText.text = "Score :" + score;
+      if (collision.gameObject.tag=="obstacle")
+      {
+           score++;
+           ScoreText.text = "Score :" + score;
 
 
-        Destroy(collision.gameObject);
-        }
+           Destroy(collision.gameObject);
+      }
+         if(score >= 10)
+      {
+             SceneManager.LoadScene("WinScene");
+      }
     }
+    
 }
